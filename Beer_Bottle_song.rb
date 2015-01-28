@@ -21,42 +21,39 @@
 
 class BeerSong
  
-    attr_accessor :beers_qty
+    attr_accessor :beers_qty, :oneToten
 
 	def initialize(beers_qty)
 		@beers_qty = beers_qty
 		@beers_qty = 0 if beers_qty < 0
 		@beers_qty = 99 if beers_qty > 99
+        @oneToten = {}
+        translate
 
         print_song(beers_qty)
-        translate(beers_qty)
+        
 	end
 
 	def print_song(beers_qty)
 		beers_qty.downto 1 do |i|
-			puts i
+			puts oneToten[i]
 		end
 	end
 
-    def translate(beers_qty)
+    def translate
             
-            oneToten = {
-            1 => "one",
-            2 => "two",
-            3 => "three",
-            4 => "four",
-            5 => "five",
-            6 => "six",
-            7 => "seven",
-            8 => "eight",
-            9 => "nine",
-            10 => "ten"
-        }
+            oneToten[1] = "one"
+            oneToten[2] = "two"
+            oneToten[3] = "Three"
+            oneToten[4] = "four"
+            oneToten[5] = "five"
+            oneToten[6] = "six"
+            oneToten[7] = "seven"
+            oneToten[8] = "eight"
+            oneToten[9] = "nine"
+            oneToten[10] = "ten"
             
             
-            oneToten.each do |beers_qty , translate|
-            puts "#{beers_qty}: #{translate}"
-            end    
     end
 
 
@@ -64,6 +61,6 @@ class BeerSong
 
 end
 
-beers = BeerSong.new(5)
+beers = BeerSong.new(10)
 #puts beers.beers_qty
 
