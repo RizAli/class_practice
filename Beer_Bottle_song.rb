@@ -21,39 +21,82 @@
 
 class BeerSong
  
-    attr_accessor :beers_qty, :oneToten
+    attr_accessor :beers_qty
 
-	def initialize(beers_qty)
-		@beers_qty = beers_qty
-		@beers_qty = 0 if beers_qty < 0
-		@beers_qty = 99 if beers_qty > 99
-        @oneToten = {}
-        translate
-
+    def initialize(beers_qty)
+        @beers_qty = beers_qty
+        @beers_qty = 0 if beers_qty < 0
+        @beers_qty = 99 if beers_qty > 99
+        setup_dictionary
         print_song(beers_qty)
         
-	end
+    end
 
-	def print_song(beers_qty)
-		beers_qty.downto 1 do |i|
-			puts oneToten[i]
-		end
-	end
+    def print_song(beers_qty)
+        # setup_dictionary.each do |key, translation|
+        #     puts setup"#{key}: #{translation}"
+        # end
+        
+        beers_qty.downto 1 do |i|
+            
+            
+            puts setup_dictionary[i]
+            
+        
+        end
+        # beers_qty.downto 1 do |i|
+        #     puts setup_dictionary
+        # end
 
-    def translate
+
+        # beers_qty.downto 1 do |i|
+        #   puts units[i]
+        # end
+    end
+
+
+
+
+
+    def setup_dictionary 
             
-            oneToten[1] = "one"
-            oneToten[2] = "two"
-            oneToten[3] = "Three"
-            oneToten[4] = "four"
-            oneToten[5] = "five"
-            oneToten[6] = "six"
-            oneToten[7] = "seven"
-            oneToten[8] = "eight"
-            oneToten[9] = "nine"
-            oneToten[10] = "ten"
-            
-            
+            numbers = {
+            #units
+            1 => "one",
+            2 => "two",
+            3 => "three",
+            4 => "four",
+            5 => "five",
+            6 => "six",
+            7 => "seven",
+            8 => "eight",
+            9 => "nine",
+            # teens
+            11=> "eleven",
+            12=> "twelve",
+            13=> "thirteen",
+            14=> "fourteen",
+            15=> "fifteen",
+            16=> "sixteen",
+            17=> "seventeen",
+            18=> "eighteen",
+            19=> "nineteen",
+            # tens
+            10=> "ten",
+            20=> "twenty",
+            30=> "thirty",
+            40=> "forty",
+            50=> "fifty",
+            60=> "sixty",
+            70=> "seventy",
+            80=> "eighty",
+            90=> "ninety"
+            }
+    
+
+            # UNITS.each do |beers_qty , translate|
+            # puts "#{beers_qty}: #{translate}"
+            # end    
     end
 
 
@@ -61,6 +104,6 @@ class BeerSong
 
 end
 
-beers = BeerSong.new(10)
+beers = BeerSong.new(21)
 #puts beers.beers_qty
 
