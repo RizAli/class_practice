@@ -32,18 +32,28 @@ class BeerSong
         
     end
 
+    
     def print_song(beers_qty)
+        beers_qty.downto 1 do |i|
+            puts "#{to_words_fromhash(i)}"
+        end
+    end
+
+
+
+
+    def to_words_fromhash(i)
         # setup_dictionary.each do |key, translation|
         #     puts setup"#{key}: #{translation}"
         # end
         
-        beers_qty.downto 1 do |i|
-            
-            
-            puts setup_dictionary[i]
-            
+            if !setup_dictionary[i]
+                return words_notinHash(i)
+            else
+                return setup_dictionary[i]
+
+            end
         
-        end
         # beers_qty.downto 1 do |i|
         #     puts setup_dictionary
         # end
@@ -54,7 +64,13 @@ class BeerSong
         # end
     end
 
+    def words_notinHash(i)
+        mode = i % 10
+        setup_dictionary[i -mode] + " " + setup_dictionary[mode]
+        #puts setup_dictionary[i - mode]
 
+        
+    end
 
 
 
@@ -104,6 +120,7 @@ class BeerSong
 
 end
 
-beers = BeerSong.new(21)
+beers = BeerSong.new(40)
 #puts beers.beers_qty
+
 
